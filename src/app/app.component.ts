@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Hero } from './shared/models/Hero.model';
 
 @Component({
-    selector: 'my-app',
+    selector: 'app-test',
     templateUrl: './app.component.html'
 })
 export class AppComponent {
