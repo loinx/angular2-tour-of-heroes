@@ -13,4 +13,12 @@ export class AppComponent {
         id: 1,
         name: 'Windstorm'
     };
+    public test() {       
+        let foo = 1;
+        
+        let bar = 2;
+        if (foo == bar)
+            foo++;
+            bar++;
+    }
 }
