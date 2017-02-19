@@ -6,7 +6,7 @@ import { HeroService } from '../api/hero.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-   moduleId: module.id,
+  moduleId: module.id,
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
@@ -24,7 +24,7 @@ export class HeroDetailComponent implements OnInit {
     this.route.params.switchMap((param: Params) => this.heroService.getHero(+param['id'])).subscribe(hero => this.hero = hero);;
   }
 
-  getBack(): void {
+  goBack(): void {
     this.location.back();
   }
 }
