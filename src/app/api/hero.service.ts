@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../shared/model/hero';
-import { HEROES } from '../shared/data/heros-mock';
+import 'rxjs/add/operator/toPromise';
+import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class HeroService {
+    private heroesUrl = 'api/heroes';
+    constructor(
+        private http: Http
+    ) { }
     /**
      * return list of Hero
      */
     getHeros(): Promise<Hero[]> {
-        return Promise.resolve(HEROES);
+        return this.http.get(this.heroesUrl).toPromise()
+            .then(response => response.json().data as Hero[])
+            .catch(this.handleError);
+
+        ;
     };
+    private handleError(error: any): Promise<any> {
+        console.error('An error occureed ', error);
+        return Promise.reject(error.message || error);
+    }
     /**
      * return list of Hero with delay option
      */
