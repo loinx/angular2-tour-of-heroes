@@ -7,15 +7,15 @@ services:
       context: .
       dockerfile: ./.docker/angular2-tour-of-heroes.production.dockerfile
     command: npm run build.prod
-    container_name: angular2-tour-of-heroes
+    container_name: angular2-tour-of-heroes-build-prod
     image: angular2-tour-of-heroes
     networks:
       - prod-network
     volumes:
       - ./dist:/home/app/angular2-tour-of-heroes/dist
 
-  angular-seed-nginx:
-    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/angular-seed.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  angular2-tour-of-heroes-nginx:
+    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/angular2-tour-of-heroes.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     container_name: angular2-tour-of-heroes-nginx-prod
     environment:
       - NGINX_HOST=localhost
