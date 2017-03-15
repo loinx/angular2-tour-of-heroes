@@ -1,8 +1,19 @@
-client:
-    build: .
-    ports:
-        - "4200:4200"
-        - "49153:49153"
-    volumes:
-        - .:/usr/src/app
+version: '2'
+
+services:
+
+  angular2-tour-of-heroes:
+    build:
+      context: .
+      dockerfile: ./.docker/angular2-tour-of-heroes.development.dockerfile
     command: npm start
+    container_name: angular2-tour-of-heroes
+    image: angular2-tour-of-heroes
+    networks:
+      - dev-network
+    ports:
+      - '5555:5555'
+
+networks:
+  dev-network:
+    driver: bridge
