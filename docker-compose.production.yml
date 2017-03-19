@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: ./.docker/angular2-tour-of-heroes.production.dockerfile
-    command: sudo npm run build.prod
+    command: npm run build.prod
     container_name: angular2-tour-of-heroes-build-prod
     image: angular2-tour-of-heroes
     networks:
